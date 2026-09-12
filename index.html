@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panchayat Level Abacus Question Paper & Answer Key Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Top App Navigation & Controls Toolbar (Hidden during print) -->
+  <header class="app-toolbar no-print">
+    <div class="toolbar-brand">
+      <div class="brand-badge">
+        <img src="assets/abacusgen_logo_white.svg" alt="AbacusGen" class="toolbar-logo-img">
+      </div>
+      <span class="brand-tag">Panchayat & Competition Engine</span>
+    </div>
+
+    <div class="toolbar-controls">
+      <!-- Level Selection -->
+      <div class="control-group">
+        <label for="levelSelect">Exam Level</label>
+        <select id="levelSelect" class="styled-select">
+          <option value="levelA" selected>Level A: Panchayat Standard (1-Digit, 5 Rows, Sums 0-9)</option>
+          <option value="levelA_plus">Level A+: 1-Digit Extended (1-Digit, 7 Rows, Sums 0-9)</option>
+          <option value="levelB">Level B: Big Friends (1-Digit, 5 Rows, Sums 0-19, Cross 10)</option>
+          <option value="levelB_plus">Level B+: Big Friends Plus (1-Digit, 7 Rows, Sums 0-25)</option>
+          <option value="levelC">Level C: 2-Digits Basic (2-Digits, 3 Rows)</option>
+          <option value="levelC_plus">Level C+: 2-Digits Intermediate (2-Digits, 5 Rows)</option>
+          <option value="levelD">Level D: 2-Digits Advanced (2-Digits, 7 Rows)</option>
+          <option value="custom">⚡ Custom Level Configuration...</option>
+        </select>
+      </div>
+
+      <!-- Quick Exam Settings -->
+      <div class="control-group">
+        <label for="examYear">Exam Year</label>
+        <input type="text" id="examYear" value="2025" class="styled-input short">
+      </div>
+
+      <div class="control-group">
+        <label for="examTime">Time Limit</label>
+        <select id="examTime" class="styled-select short">
+          <option value="08 MINUTES" selected>08 Mins</option>
+          <option value="10 MINUTES">10 Mins</option>
+          <option value="05 MINUTES">05 Mins</option>
+          <option value="12 MINUTES">12 Mins</option>
+          <option value="15 MINUTES">15 Mins</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="categoryText">Category Label</label>
+        <input type="text" id="categoryText" value="CATEGORY A (FOR FIRST LEVEL STUDENTS)" class="styled-input medium">
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="button-group">
+        <button id="btnGenerate" class="btn btn-primary" title="Generate 100 new mathematically valid questions">
+          <span class="btn-icon">🎲</span> Generate New Paper
+        </button>
+        <button id="btnPrint" class="btn btn-success" title="Print or Save as PDF (Exact 2-page A4 Landscape)">
+          <span class="btn-icon">🖨️</span> Print / Save PDF
+        </button>
+        <button id="btnToggleSettings" class="btn btn-secondary" title="Advanced Customization">
+          <span class="btn-icon">⚙️</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Right Controls: View Switcher & Zoom -->
+    <div class="toolbar-view-tools">
+      <div class="segmented-control">
+        <button class="seg-btn active" data-view="both" title="Show both Question Paper & Answer Key">Both Pages</button>
+        <button class="seg-btn" data-view="qp" title="Show Question Paper only">Page 1: QP</button>
+        <button class="seg-btn" data-view="ak" title="Show Answer Key only">Page 2: Key</button>
+        <button class="seg-btn" data-view="matrix" title="Quick Answer Matrix for grading">100-Grid Matrix</button>
+      </div>
+
+      <div class="zoom-tools">
+        <button id="btnZoomOut" class="btn-icon-only" title="Zoom Out">−</button>
+        <span id="zoomLevelText">Fit A4</span>
+        <button id="btnZoomIn" class="btn-icon-only" title="Zoom In">+</button>
+        <button id="btnZoomFit" class="btn-icon-only" title="Fit to Screen">⛶</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Drawer Modal for Advanced Custom Settings -->
+  <div id="customModal" class="custom-modal no-print hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>⚡ Custom Exam & Level Configuration</h3>
+        <button id="btnCloseModal" class="btn-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-field">
+            <label>Institution / Exam Title</label>
+            <input type="text" id="customTitle" value="PANCHAYAT LEVEL ABACUS EXAM">
+          </div>
+          <div class="form-field">
+            <label>Exam Mode Subtitle</label>
+            <input type="text" id="customSubtitle" value="WITH ABACUS ONLY">
+          </div>
+          <div class="form-field">
+            <label>Digits per Number</label>
+            <select id="customDigits">
+              <option value="1">1 Digit (1 to 9)</option>
+              <option value="2">2 Digits (10 to 99)</option>
+              <option value="mixed_1_2">Mixed 1 & 2 Digits</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Number of Rows (Steps)</label>
+            <select id="customRows">
+              <option value="3">3 Rows</option>
+              <option value="4">4 Rows</option>
+              <option value="5" selected>5 Rows (Standard)</option>
+              <option value="6">6 Rows</option>
+              <option value="7">7 Rows</option>
+              <option value="8">8 Rows</option>
+              <option value="10">10 Rows</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Maximum Cumulative Total Limit</label>
+            <select id="customMaxTotal">
+              <option value="9">Max 9 (Single Rod Level A strictly 0..9)</option>
+              <option value="19">Max 19 (Tens rod intro / Big Friends)</option>
+              <option value="30">Max 30</option>
+              <option value="99" selected>Max 99 (Full 2-rod capacity)</option>
+              <option value="999">Max 999</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Negative Numbers</label>
+            <select id="customAllowNegatives">
+              <option value="yes" selected>Allow Subtractions (e.g. -2, -5)</option>
+              <option value="no">Addition Only (No Negatives)</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Paper Seed / ID</label>
+            <div class="input-with-button">
+              <input type="text" id="customSeed" placeholder="Optional random seed (e.g. SET-2025-A)">
+              <button id="btnRandomizeSeed" class="btn btn-sm">Random</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btnApplyCustom" class="btn btn-primary">Apply & Generate Paper</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Matrix Overlay Modal -->
+  <div id="matrixModal" class="custom-modal no-print hidden">
+    <div class="modal-card matrix-card">
+      <div class="modal-header">
+        <h3>📋 Official 100-Question Answer Key Matrix</h3>
+        <div class="matrix-actions">
+          <button id="btnCopyMatrix" class="btn btn-sm btn-secondary">📋 Copy All Answers</button>
+          <button id="btnCloseMatrix" class="btn-close">&times;</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="matrix-info">Compact rapid-grading card for evaluators (Questions 1 to 100):</p>
+        <div id="matrixTableContainer" class="matrix-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Workspace Viewport for Interactive Sheet Canvas -->
+  <main class="workspace-canvas" id="workspaceCanvas">
+    <div class="sheet-scale-wrapper" id="sheetScaleWrapper">
+
+      <!-- ======================================================== -->
+      <!-- PAGE 1: QUESTION PAPER (Strictly 1 A4 Landscape Sheet)    -->
+      <!-- ======================================================== -->
+      <section class="a4-sheet" id="page-qp">
+        <!-- Sheet Header -->
+        <header class="sheet-header">
+          <div class="header-left">
+            <div class="logo-wrapper">
+              <img src="assets/abacusgen_logo.svg" alt="AbacusGen" class="exam-logo" id="qpLogo">
+            </div>
+            <div class="exam-meta">
+              <div class="meta-row font-bold" id="qpExamTime">EXAM TIME: 08 MINUTES</div>
+              <div class="meta-row font-bold" id="qpExamSubtitle">WITH ABACUS ONLY</div>
+            </div>
+          </div>
+
+          <div class="header-center">
+            <h1 class="exam-main-title" id="qpMainTitle">PANCHAYAT LEVEL ABACUS EXAM</h1>
+            <h2 class="exam-sub-title" id="qpPaperTitle">QUESTION PAPER - 2025</h2>
+          </div>
+
+          <div class="header-right">
+            <div class="candidate-field">
+              <span class="field-label">ROLL NUMBER :</span>
+              <span class="field-dots">.....................................</span>
+            </div>
+            <div class="candidate-field">
+              <span class="field-label">NAME :</span>
+              <span class="field-dots">...................................................</span>
+            </div>
+            <div class="category-banner font-bold" id="qpCategoryText">
+              CATEGORY A (FOR FIRST LEVEL STUDENTS)
+            </div>
+          </div>
+        </header>
+
+        <!-- Solid Divider Bar -->
+        <hr class="header-divider">
+
+        <!-- 100 Questions Exam Grid (4 Rows x 25 Columns) -->
+        <div class="exam-grid-container" id="qpGridContainer">
+          <!-- Populated dynamically by app.js -->
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- PAGE 2: ANSWER KEY (Strictly 1 A4 Landscape Sheet)        -->
+      <!-- ======================================================== -->
+      <section class="a4-sheet answer-key-sheet" id="page-ak">
+        <!-- Sheet Header -->
+        <header class="sheet-header ak-header">
+          <div class="header-left">
+            <div class="logo-wrapper">
+              <img src="assets/abacusgen_logo.svg" alt="AbacusGen" class="exam-logo" id="akLogo">
+            </div>
+            <div class="exam-meta">
+              <div class="meta-row font-bold" id="akExamTime">OFFICIAL EVALUATION KEY</div>
+              <div class="meta-row font-bold" id="akExamSubtitle">TOTAL QUESTIONS: 100 | MAX MARKS: 100</div>
+            </div>
+          </div>
+
+          <div class="header-center">
+            <h1 class="exam-main-title" id="akMainTitle">PANCHAYAT LEVEL ABACUS EXAM</h1>
+            <h2 class="exam-sub-title ak-badge" id="akPaperTitle">ANSWER KEY - 2025</h2>
+          </div>
+
+          <div class="header-right">
+            <div class="candidate-field ak-eval-meta">
+              <span class="field-label">PAPER CODE :</span>
+              <span class="field-value font-mono font-bold" id="akPaperCode">PNC-2025-A-01</span>
+            </div>
+            <div class="candidate-field ak-eval-meta">
+              <span class="field-label">EVALUATION TIME :</span>
+              <span class="field-value font-bold" id="akEvalTime">08 MINUTES ALLOTTED</span>
+            </div>
+            <div class="category-banner ak-category font-bold" id="akCategoryText">
+              CATEGORY A (FOR FIRST LEVEL STUDENTS)
+            </div>
+          </div>
+        </header>
+
+        <!-- Solid Divider Bar -->
+        <hr class="header-divider ak-divider">
+
+        <!-- 100 Questions Answer Grid (4 Rows x 25 Columns) with Answers Injected -->
+        <div class="exam-grid-container" id="akGridContainer">
+          <!-- Populated dynamically by app.js -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Toast Notification System -->
+  <div id="toast" class="toast no-print hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
