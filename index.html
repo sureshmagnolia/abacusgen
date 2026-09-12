@@ -24,14 +24,20 @@
       <div class="control-group">
         <label for="levelSelect">Exam Level</label>
         <select id="levelSelect" class="styled-select">
-          <option value="levelA" selected>Level A: Panchayat Standard (1-Digit, 5 Rows, Sums 0-9)</option>
-          <option value="levelA_plus">Level A+: 1-Digit Extended (1-Digit, 7 Rows, Sums 0-9)</option>
-          <option value="levelB">Level B: Big Friends (1-Digit, 5 Rows, Sums 0-19, Cross 10)</option>
-          <option value="levelB_plus">Level B+: Big Friends Plus (1-Digit, 7 Rows, Sums 0-25)</option>
-          <option value="levelC">Level C: 2-Digits Basic (2-Digits, 3 Rows)</option>
-          <option value="levelC_plus">Level C+: 2-Digits Intermediate (2-Digits, 5 Rows)</option>
-          <option value="levelD">Level D: 2-Digits Advanced (2-Digits, 7 Rows)</option>
-          <option value="custom">⚡ Custom Level Configuration...</option>
+          <optgroup label="Official Past Panchayat Papers">
+            <option value="official_2025">📜 Official Panchayat Exam 2025 (With Key)</option>
+            <option value="official_2023_2024">📜 Official Panchayat Exam 2023-2024 (With Key)</option>
+          </optgroup>
+          <optgroup label="Generate New Sample Papers">
+            <option value="levelA" selected>Level A: Panchayat Standard (1-Digit, 5 Rows, Sums 0-9)</option>
+            <option value="levelA_plus">Level A+: 1-Digit Extended (1-Digit, 7 Rows, Sums 0-9)</option>
+            <option value="levelB">Level B: Big Friends (1-Digit, 5 Rows, Sums 0-19, Cross 10)</option>
+            <option value="levelB_plus">Level B+: Big Friends Plus (1-Digit, 7 Rows, Sums 0-25)</option>
+            <option value="levelC">Level C: 2-Digits Basic (2-Digits, 3 Rows)</option>
+            <option value="levelC_plus">Level C+: 2-Digits Intermediate (2-Digits, 5 Rows)</option>
+            <option value="levelD">Level D: 2-Digits Advanced (2-Digits, 7 Rows)</option>
+            <option value="custom">⚡ Custom Level Configuration...</option>
+          </optgroup>
         </select>
       </div>
 

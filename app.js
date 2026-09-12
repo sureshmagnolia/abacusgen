@@ -25,6 +25,34 @@
     questions: [] // Array of { qNum: number, numbers: number[], answer: number }
   };
 
+  // Official Past Panchayat Exam Datasets
+  const OFFICIAL_PAPERS = {
+    official_2025: {
+      name: 'Official Panchayat Exam 2025',
+      year: '2025',
+      time: '08 MINUTES',
+      category: 'CATEGORY A (FOR FIRST LEVEL STUDENTS)',
+      title: 'PANCHAYAT LEVEL ABACUS EXAM',
+      subtitle: 'WITH ABACUS ONLY',
+      paperCode: 'PNC-2025-OFFICIAL-KEY',
+      rows: 5,
+      digits: 1,
+      questions: [{"qNum": 1, "numbers": [2, 5, 1, -2, 2], "answer": 8}, {"qNum": 2, "numbers": [1, 5, 2, -3, 2], "answer": 7}, {"qNum": 3, "numbers": [5, 2, 2, -2, 2], "answer": 9}, {"qNum": 4, "numbers": [2, 1, 1, 5, -4], "answer": 5}, {"qNum": 5, "numbers": [1, 5, 2, -3, 2], "answer": 7}, {"qNum": 6, "numbers": [2, 2, 5, -2, 2], "answer": 9}, {"qNum": 7, "numbers": [2, -1, 5, 3, -2], "answer": 7}, {"qNum": 8, "numbers": [1, 1, 5, 1, -3], "answer": 5}, {"qNum": 9, "numbers": [1, 2, 1, -4, 4], "answer": 4}, {"qNum": 10, "numbers": [8, -3, 2, -1, 3], "answer": 9}, {"qNum": 11, "numbers": [2, 1, 1, -3, 5], "answer": 6}, {"qNum": 12, "numbers": [1, 1, 5, 1, -3], "answer": 5}, {"qNum": 13, "numbers": [4, 5, -2, 2, -2], "answer": 7}, {"qNum": 14, "numbers": [1, 3, -2, 5, -2], "answer": 5}, {"qNum": 15, "numbers": [8, -5, -2, 2, 1], "answer": 4}, {"qNum": 16, "numbers": [3, 5, 1, -2, 1], "answer": 8}, {"qNum": 17, "numbers": [2, 2, -4, 2, 1], "answer": 3}, {"qNum": 18, "numbers": [1, 5, 3, -5, 5], "answer": 9}, {"qNum": 19, "numbers": [6, -5, 1, 2, 5], "answer": 9}, {"qNum": 20, "numbers": [1, 1, 2, -4, 5], "answer": 5}, {"qNum": 21, "numbers": [2, 5, -1, 1, -1], "answer": 6}, {"qNum": 22, "numbers": [8, 1, -5, 5, -4], "answer": 5}, {"qNum": 23, "numbers": [4, -2, 2, -2, 2], "answer": 4}, {"qNum": 24, "numbers": [8, 1, -5, 5, -4], "answer": 5}, {"qNum": 25, "numbers": [2, 1, 1, -3, -1], "answer": 0}, {"qNum": 26, "numbers": [1, 5, 1, -2, 1], "answer": 6}, {"qNum": 27, "numbers": [2, 2, 5, -2, 2], "answer": 9}, {"qNum": 28, "numbers": [2, -1, 5, 3, -2], "answer": 7}, {"qNum": 29, "numbers": [1, 1, 5, 1, -3], "answer": 5}, {"qNum": 30, "numbers": [4, 5, -2, 2, -2], "answer": 7}, {"qNum": 31, "numbers": [2, 2, -4, 2, 1], "answer": 3}, {"qNum": 32, "numbers": [8, -5, 1, 5, -1], "answer": 8}, {"qNum": 33, "numbers": [2, 5, 2, -5, 5], "answer": 9}, {"qNum": 34, "numbers": [5, 1, 2, -1, 1], "answer": 8}, {"qNum": 35, "numbers": [2, 1, 1, -3, -1], "answer": 0}, {"qNum": 36, "numbers": [1, 3, -3, 5, 2], "answer": 8}, {"qNum": 37, "numbers": [1, 3, 5, -5, 5], "answer": 9}, {"qNum": 38, "numbers": [2, 5, 1, 1, -1], "answer": 8}, {"qNum": 39, "numbers": [7, -5, 1, -2, 3], "answer": 4}, {"qNum": 40, "numbers": [2, 1, 5, 1, -4], "answer": 5}, {"qNum": 41, "numbers": [1, 2, 5, -2, 3], "answer": 9}, {"qNum": 42, "numbers": [2, 1, 1, 5, -4], "answer": 5}, {"qNum": 43, "numbers": [1, 2, 5, 1, -4], "answer": 5}, {"qNum": 44, "numbers": [2, 5, -5, 2, -1], "answer": 3}, {"qNum": 45, "numbers": [2, 1, 5, -1, 1], "answer": 8}, {"qNum": 46, "numbers": [1, 2, 5, -2, 3], "answer": 9}, {"qNum": 47, "numbers": [6, 3, -2, 1, -2], "answer": 6}, {"qNum": 48, "numbers": [2, 1, 5, -1, 1], "answer": 8}, {"qNum": 49, "numbers": [2, 1, 1, 5, -4], "answer": 5}, {"qNum": 50, "numbers": [4, -2, 2, -2, 2], "answer": 4}, {"qNum": 51, "numbers": [2, 1, 1, -3, -1], "answer": 0}, {"qNum": 52, "numbers": [1, 5, 1, 1, -2], "answer": 6}, {"qNum": 53, "numbers": [5, 4, -2, 1, -2], "answer": 6}, {"qNum": 54, "numbers": [8, 1, -5, 5, -4], "answer": 5}, {"qNum": 55, "numbers": [4, -1, -3, 3, 5], "answer": 8}, {"qNum": 56, "numbers": [1, 2, 5, 1, -4], "answer": 5}, {"qNum": 57, "numbers": [2, 5, 2, -5, 5], "answer": 9}, {"qNum": 58, "numbers": [5, 1, 1, 2, -4], "answer": 5}, {"qNum": 59, "numbers": [2, 1, 1, -4, 5], "answer": 5}, {"qNum": 60, "numbers": [1, 1, 2, -1, -1], "answer": 2}, {"qNum": 61, "numbers": [2, 1, 5, 1, -3], "answer": 6}, {"qNum": 62, "numbers": [5, 3, 1, -4, 2], "answer": 7}, {"qNum": 63, "numbers": [1, 5, 2, 1, -1], "answer": 8}, {"qNum": 64, "numbers": [1, 2, -3, 3, 5], "answer": 8}, {"qNum": 65, "numbers": [3, 1, 5, -3, 3], "answer": 9}, {"qNum": 66, "numbers": [1, 1, 2, 5, -2], "answer": 7}, {"qNum": 67, "numbers": [4, 5, -3, -1, 4], "answer": 9}, {"qNum": 68, "numbers": [5, 2, -1, 2, 1], "answer": 9}, {"qNum": 69, "numbers": [5, 2, -1, 1, -2], "answer": 5}, {"qNum": 70, "numbers": [8, -5, 1, 5, -1], "answer": 8}, {"qNum": 71, "numbers": [4, 5, -2, 2, -2], "answer": 7}, {"qNum": 72, "numbers": [2, 2, 5, -1, 1], "answer": 9}, {"qNum": 73, "numbers": [5, 1, 2, 1, -2], "answer": 7}, {"qNum": 74, "numbers": [1, 5, 1, -2, -5], "answer": 0}, {"qNum": 75, "numbers": [1, 2, 1, 5, -2], "answer": 7}, {"qNum": 76, "numbers": [2, 5, 2, -5, 5], "answer": 9}, {"qNum": 77, "numbers": [5, 1, 2, -1, 1], "answer": 8}, {"qNum": 78, "numbers": [5, 4, -2, 1, -2], "answer": 6}, {"qNum": 79, "numbers": [2, 1, 1, -3, -1], "answer": 0}, {"qNum": 80, "numbers": [1, 5, 1, 1, -2], "answer": 6}, {"qNum": 81, "numbers": [1, 2, 5, 1, -4], "answer": 5}, {"qNum": 82, "numbers": [2, 5, 2, -5, 5], "answer": 9}, {"qNum": 83, "numbers": [5, 3, 1, -4, 2], "answer": 7}, {"qNum": 84, "numbers": [1, 5, 2, 1, -1], "answer": 8}, {"qNum": 85, "numbers": [1, 1, 2, -1, -1], "answer": 2}, {"qNum": 86, "numbers": [2, 1, 5, 1, -3], "answer": 6}, {"qNum": 87, "numbers": [5, 1, 1, 2, -4], "answer": 5}, {"qNum": 88, "numbers": [2, 1, 1, -4, 5], "answer": 5}, {"qNum": 89, "numbers": [1, 2, -3, 3, 5], "answer": 8}, {"qNum": 90, "numbers": [3, 1, 5, -3, 3], "answer": 9}, {"qNum": 91, "numbers": [1, 1, 2, 5, -2], "answer": 7}, {"qNum": 92, "numbers": [4, 5, -3, -1, 4], "answer": 9}, {"qNum": 93, "numbers": [5, 2, -1, 2, 1], "answer": 9}, {"qNum": 94, "numbers": [5, 2, -1, 1, -2], "answer": 5}, {"qNum": 95, "numbers": [8, -5, 1, 5, -1], "answer": 8}, {"qNum": 96, "numbers": [1, 5, 1, -2, -5], "answer": 0}, {"qNum": 97, "numbers": [1, 2, 1, 5, -2], "answer": 7}, {"qNum": 98, "numbers": [5, 1, 2, 1, -2], "answer": 7}, {"qNum": 99, "numbers": [4, 5, -2, 2, -2], "answer": 7}, {"qNum": 100, "numbers": [2, 2, 5, -1, 1], "answer": 9}]
+    },
+    official_2023_2024: {
+      name: 'Official Panchayat Exam 2023-2024',
+      year: '2023-2024',
+      time: '10 MINUTES',
+      category: 'CATEGORY A (FOR FIRST LEVEL STUDENTS)',
+      title: 'PANCHAYATH LEVEL ABACUS EXAM',
+      subtitle: 'WITH ABACUS ONLY',
+      paperCode: 'PNC-2023-24-OFFICIAL-KEY',
+      rows: 5,
+      digits: 1,
+      questions: [{"qNum": 1, "numbers": [7, 2, -5, -3, 5], "answer": 6}, {"qNum": 2, "numbers": [3, -3, 5, 4, -2], "answer": 7}, {"qNum": 3, "numbers": [1, 2, 1, 5, -1], "answer": 8}, {"qNum": 4, "numbers": [1, 5, 1, -2, 1], "answer": 6}, {"qNum": 5, "numbers": [3, 1, 5, -2, 2], "answer": 9}, {"qNum": 6, "numbers": [2, 2, -4, 2, 1], "answer": 3}, {"qNum": 7, "numbers": [8, -5, 1, 5, -1], "answer": 8}, {"qNum": 8, "numbers": [2, 5, 2, -5, 5], "answer": 9}, {"qNum": 9, "numbers": [5, 1, 2, -1, 1], "answer": 8}, {"qNum": 10, "numbers": [2, 5, 1, 1, -1], "answer": 8}, {"qNum": 11, "numbers": [7, -5, 1, -2, 3], "answer": 4}, {"qNum": 12, "numbers": [1, 3, 5, -5, 5], "answer": 9}, {"qNum": 13, "numbers": [2, 1, 1, -3, -1], "answer": 0}, {"qNum": 14, "numbers": [1, 3, -3, 5, 2], "answer": 8}, {"qNum": 15, "numbers": [2, 1, 5, 1, -4], "answer": 5}, {"qNum": 16, "numbers": [1, 2, 5, -2, 3], "answer": 9}, {"qNum": 17, "numbers": [2, 1, 1, 5, -4], "answer": 5}, {"qNum": 18, "numbers": [1, 2, 5, 1, -4], "answer": 5}, {"qNum": 19, "numbers": [2, 5, -5, 2, -1], "answer": 3}, {"qNum": 20, "numbers": [2, 1, 5, -1, 1], "answer": 8}, {"qNum": 21, "numbers": [2, 1, 1, 5, -4], "answer": 5}, {"qNum": 22, "numbers": [2, 2, 5, -1, 1], "answer": 9}, {"qNum": 23, "numbers": [2, 1, 5, -1, 1], "answer": 8}, {"qNum": 24, "numbers": [1, 1, 2, 5, -2], "answer": 7}, {"qNum": 25, "numbers": [6, 3, -2, 1, -2], "answer": 6}, {"qNum": 26, "numbers": [5, 4, -2, 1, -2], "answer": 6}, {"qNum": 27, "numbers": [4, -1, -3, 3, 5], "answer": 8}, {"qNum": 28, "numbers": [8, 1, -5, 5, -4], "answer": 5}, {"qNum": 29, "numbers": [2, 1, 1, -3, -1], "answer": 0}, {"qNum": 30, "numbers": [1, 5, 1, 1, -2], "answer": 6}, {"qNum": 31, "numbers": [1, 2, 5, 1, -4], "answer": 5}, {"qNum": 32, "numbers": [2, 5, 2, -5, 5], "answer": 9}, {"qNum": 33, "numbers": [5, 3, 1, -4, 2], "answer": 7}, {"qNum": 34, "numbers": [1, 5, 2, 1, -1], "answer": 8}, {"qNum": 35, "numbers": [1, 1, 2, -1, -1], "answer": 2}, {"qNum": 36, "numbers": [2, 1, 5, 1, -3], "answer": 6}, {"qNum": 37, "numbers": [5, 1, 1, 2, -4], "answer": 5}, {"qNum": 38, "numbers": [2, 1, 1, -4, 5], "answer": 5}, {"qNum": 39, "numbers": [1, 2, -3, 3, 5], "answer": 8}, {"qNum": 40, "numbers": [3, 1, 5, -3, 3], "answer": 9}, {"qNum": 41, "numbers": [1, 1, 2, 5, -2], "answer": 7}, {"qNum": 42, "numbers": [4, 5, -3, -1, 4], "answer": 9}, {"qNum": 43, "numbers": [5, 2, -1, 2, 1], "answer": 9}, {"qNum": 44, "numbers": [5, 2, -1, 1, -2], "answer": 5}, {"qNum": 45, "numbers": [8, -5, 1, 5, -1], "answer": 8}, {"qNum": 46, "numbers": [1, 5, 1, -2, -5], "answer": 0}, {"qNum": 47, "numbers": [1, 2, 1, 5, -2], "answer": 7}, {"qNum": 48, "numbers": [1, 5, 1, -2, 1], "answer": 6}, {"qNum": 49, "numbers": [1, 5, 2, -3, 2], "answer": 7}, {"qNum": 50, "numbers": [2, -1, 5, 3, -2], "answer": 7}, {"qNum": 51, "numbers": [2, 5, 2, -2, 1], "answer": 8}, {"qNum": 52, "numbers": [5, 2, -1, 2, 1], "answer": 9}, {"qNum": 53, "numbers": [5, 2, 1, 1, -3], "answer": 6}, {"qNum": 54, "numbers": [1, 3, 5, -3, 1], "answer": 7}, {"qNum": 55, "numbers": [6, 2, -5, 5, 1], "answer": 9}, {"qNum": 56, "numbers": [2, 2, 5, -1, 1], "answer": 9}, {"qNum": 57, "numbers": [1, 1, 2, 5, -2], "answer": 7}, {"qNum": 58, "numbers": [3, 5, -1, 2, -2], "answer": 7}, {"qNum": 59, "numbers": [1, 7, -5, 1, -2], "answer": 2}, {"qNum": 60, "numbers": [3, -1, 5, 2, -1], "answer": 8}, {"qNum": 61, "numbers": [2, 5, -2, 3, 1], "answer": 9}, {"qNum": 62, "numbers": [5, 4, -5, -4, 2], "answer": 2}, {"qNum": 63, "numbers": [1, 1, -2, 5, 4], "answer": 9}, {"qNum": 64, "numbers": [9, -5, -3, 2, 1], "answer": 4}, {"qNum": 65, "numbers": [1, 1, -2, 5, 4], "answer": 9}, {"qNum": 66, "numbers": [2, 5, -1, 1, -1], "answer": 6}, {"qNum": 67, "numbers": [3, 5, -5, 5, 1], "answer": 9}, {"qNum": 68, "numbers": [2, 1, 5, 1, -3], "answer": 6}, {"qNum": 69, "numbers": [2, 1, 1, -4, 5], "answer": 5}, {"qNum": 70, "numbers": [2, -1, 5, 3, -2], "answer": 7}, {"qNum": 71, "numbers": [1, 3, 5, -3, -3], "answer": 3}, {"qNum": 72, "numbers": [2, 5, 1, -2, 2], "answer": 8}, {"qNum": 73, "numbers": [2, 2, 5, -2, 2], "answer": 9}, {"qNum": 74, "numbers": [5, 2, 2, -2, 2], "answer": 9}, {"qNum": 75, "numbers": [5, 2, 2, -3, 2], "answer": 8}, {"qNum": 76, "numbers": [5, 1, 2, 1, -2], "answer": 7}, {"qNum": 77, "numbers": [4, 5, -2, 2, -2], "answer": 7}, {"qNum": 78, "numbers": [2, 2, 5, -1, 1], "answer": 9}, {"qNum": 79, "numbers": [2, 1, 1, 5, -4], "answer": 5}, {"qNum": 80, "numbers": [1, 5, 2, -3, 2], "answer": 7}, {"qNum": 81, "numbers": [7, -5, 2, 5, -1], "answer": 8}, {"qNum": 82, "numbers": [1, 1, 1, 5, -1], "answer": 7}, {"qNum": 83, "numbers": [1, 1, 5, 1, -3], "answer": 5}, {"qNum": 84, "numbers": [1, 2, 1, -4, 4], "answer": 4}, {"qNum": 85, "numbers": [8, -5, -2, 2, 1], "answer": 4}, {"qNum": 86, "numbers": [3, 5, 1, -2, 1], "answer": 8}, {"qNum": 87, "numbers": [1, 1, 5, 1, -3], "answer": 5}, {"qNum": 88, "numbers": [4, 5, -2, 2, -2], "answer": 7}, {"qNum": 89, "numbers": [1, 3, -2, 5, -2], "answer": 5}, {"qNum": 90, "numbers": [8, -3, 2, -1, 3], "answer": 9}, {"qNum": 91, "numbers": [2, 1, 1, -3, 5], "answer": 6}, {"qNum": 92, "numbers": [2, 2, -4, 2, 1], "answer": 3}, {"qNum": 93, "numbers": [1, 5, 3, -5, 5], "answer": 9}, {"qNum": 94, "numbers": [6, -5, 1, 2, 5], "answer": 9}, {"qNum": 95, "numbers": [1, 1, 2, -4, 5], "answer": 5}, {"qNum": 96, "numbers": [2, 5, -1, 1, -1], "answer": 6}, {"qNum": 97, "numbers": [5, 1, 3, -1, -3], "answer": 5}, {"qNum": 98, "numbers": [7, 2, -5, -3, 5], "answer": 6}, {"qNum": 99, "numbers": [1, 2, 5, -2, 3], "answer": 9}, {"qNum": 100, "numbers": [4, -2, 2, -2, 2], "answer": 4}]
+    }
+  };
+
   // Preset Level Definitions
   const LEVEL_PRESETS = {
     levelA: {
@@ -417,6 +445,29 @@
       }
 
       state.currentLevel = val;
+
+      if (val.startsWith('official_')) {
+        const off = OFFICIAL_PAPERS[val];
+        state.rows = off.rows;
+        state.digits = off.digits;
+        state.year = off.year;
+        state.time = off.time;
+        state.category = off.category;
+        state.title = off.title;
+        state.subtitle = off.subtitle;
+        state.paperCode = off.paperCode;
+        state.questions = JSON.parse(JSON.stringify(off.questions));
+
+        document.getElementById('examYear').value = off.year;
+        document.getElementById('examTime').value = off.time;
+        document.getElementById('categoryText').value = off.category;
+
+        renderGrids();
+        renderMatrix();
+        showToast(`Loaded ${off.name}`);
+        return;
+      }
+
       const preset = LEVEL_PRESETS[val];
       if (preset) {
         state.rows = preset.rows;
@@ -425,6 +476,8 @@
         state.allowNegatives = preset.allowNegatives;
         state.category = preset.category;
         state.time = preset.time;
+        state.title = 'PANCHAYAT LEVEL ABACUS EXAM';
+        state.subtitle = 'WITH ABACUS ONLY';
 
         document.getElementById('categoryText').value = preset.category;
         document.getElementById('examTime').value = preset.time;
